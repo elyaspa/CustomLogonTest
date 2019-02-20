@@ -12,6 +12,7 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
+using DevExpress.ExpressApp.Security;
 
 namespace CustomLogonTest.Module.BusinessObjects
 {
@@ -22,11 +23,19 @@ namespace CustomLogonTest.Module.BusinessObjects
     //[Persistent("DatabaseTableName")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
   [DefaultClassOptions, DefaultProperty("UserName")]
-public class Employee : PermissionPolicyUser{
+public class Employee : PermissionPolicyUser
+    {
     public Employee(Session session) : base(session) {}
-    private Company company;
-    [Association("Company-Employees")]
-    public Company Company {
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            //var currentId = SecuritySystem.CurrentUserId;
+            // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+        }
+
+        private Company company;
+        [Association("Company-Employees")]
+        public Company Company {
         get { return company; }
         set { SetPropertyValue("Company", ref company, value);}
     }
@@ -38,5 +47,10 @@ public class Employee : PermissionPolicyUser{
                 return GetCollection<Invoice>(nameof(Invoice));
             }
         }
+
+       
+       
     }
+   
+
 }

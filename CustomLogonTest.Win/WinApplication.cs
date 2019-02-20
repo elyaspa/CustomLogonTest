@@ -24,7 +24,7 @@ namespace CustomLogonTest.Win {
         #endregion
         public CustomLogonTestWindowsFormsApplication() {
             SecurityStrategy security = ((SecurityStrategy)Security);
-           // security.AnonymousAllowedTypes.Add(typeof(Company));
+           //security.AnonymousAllowedTypes.Add(typeof(Company));
             InitializeComponent();
 			InitializeDefaults();
            

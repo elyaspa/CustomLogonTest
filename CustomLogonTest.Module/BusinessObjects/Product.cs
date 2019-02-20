@@ -32,7 +32,8 @@ namespace CustomLogonTest.Module.BusinessObjects
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-       
+
+        Company company;
         Invoice invoice;
         string name;
 
@@ -60,7 +61,19 @@ namespace CustomLogonTest.Module.BusinessObjects
                 SetPropertyValue(nameof(Invoice), ref invoice, value);
             }
         }
-        
+
+        [Association("Company-Products")]
+        public Company Company
+        {
+            get
+            {
+                return company;
+            }
+            set
+            {
+                SetPropertyValue(nameof(Company), ref company, value);
+            }
+        }
 
     }
 }

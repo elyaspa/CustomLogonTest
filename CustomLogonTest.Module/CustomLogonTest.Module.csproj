@@ -100,6 +100,12 @@
     <Compile Include="BusinessObjects\Employee.cs" />
     <Compile Include="BusinessObjects\Invoice.cs" />
     <Compile Include="BusinessObjects\Product.cs" />
+    <Compile Include="Controllers\Filter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\Filter.Designer.cs">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>

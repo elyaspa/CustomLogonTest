@@ -26,5 +26,21 @@ public class Company : BaseObject {
     public XPCollection<Employee> Employees {
         get { return GetCollection<Employee>("Employees"); }
     }
-}
+        [Association("Company-Invoices")]
+        public XPCollection<Invoice> Invoices
+        {
+            get
+            {
+                return GetCollection<Invoice>(nameof(Invoices));
+            }
+        }
+        [Association("Company-Products")]
+        public XPCollection<Product> Products
+        {
+            get
+            {
+                return GetCollection<Product>(nameof(Products));
+            }
+        }
+    }
 }

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
+using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 
 namespace CustomLogonTest.Module.BusinessObjects
 {
@@ -25,22 +26,46 @@ namespace CustomLogonTest.Module.BusinessObjects
         public Invoice(Session session)
             : base(session)
         {
+           
         }
         public override void AfterConstruction()
         {
             base.AfterConstruction();
+            //if (SecuritySystem.CurrentUser != null)
+            //{
+            //    Employees = Session.GetObjectByKey<PermissionPolicyUser>(SecuritySystem.CurrentUserId) as Employee;
+                
+            //}
+
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
+
+       
+
+        Company company;
         Employee employees;
         string code;
         string name;
 
+        [Association("Company-Invoices")]
+        public Company Company
+        {
+            get
+            {
+                return company;
+            }
+            set
+            {
+                SetPropertyValue(nameof(Company), ref company, value);
+            }
+        }
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Name
         {
             get
             {
                 return name;
+                
             }
             set
             {
@@ -80,5 +105,6 @@ namespace CustomLogonTest.Module.BusinessObjects
                 SetPropertyValue(nameof(Employees), ref employees, value);
             }
         }
+       
     }
 }
